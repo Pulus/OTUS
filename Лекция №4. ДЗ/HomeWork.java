@@ -10,6 +10,8 @@ import java.util.Scanner;
 // Когда программа запросит - введите свое имя латиницей
 // Сделайте pull-request с программой.
 // Отправить в чат задания ссылку на pull-request
+// Для проверки pull-requests
+
 public class HomeWork {
 public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
