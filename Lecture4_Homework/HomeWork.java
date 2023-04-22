@@ -1,3 +1,5 @@
+package Lecture4_Homework;
+
 import java.util.Base64;
 import java.util.Scanner;
 // Зарегистрироваться на github.com
