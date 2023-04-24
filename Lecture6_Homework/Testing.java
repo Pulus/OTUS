@@ -19,12 +19,12 @@ public class Testing {
 
         //Двумерный массив c вариантами ответов
         String[][] answer = new String[cfgCollQuestions][cfgCollAnswer];
-        answer[0][0] = "1) 2";
-        answer[0][1] = "2) 4";
-        answer[1][0] = "1) 5";
-        answer[1][1] = "2) 4";
-        answer[2][0] = "1) 5";
-        answer[2][1] = "2) 9";
+        answer[0][0] = "2";
+        answer[0][1] = "4";
+        answer[1][0] = "5";
+        answer[1][1] = "4";
+        answer[2][0] = "5";
+        answer[2][1] = "9";
 
         //Массив правильных ответов
         int[] correctAnswers = new int[cfgCollQuestions];
@@ -36,7 +36,7 @@ public class Testing {
             System.out.println(questions[i]); //Вывод вопроса на экран
 
             //Вывод вариантов ответов на экран
-            for (int j = 0; j < cfgCollAnswer; j++){System.out.println(answer[i][j]);}
+            for (int j = 0; j < cfgCollAnswer; j++){System.out.println((j+1) + ") " + answer[i][j]);}
 
             System.out.print("Выберите вариант ответа: ");
             Scanner scan = new Scanner(System.in); //Считываем с консоли ответ пользователя
