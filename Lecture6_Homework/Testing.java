@@ -16,7 +16,7 @@ public class Testing {
         //Двумерный массив c вариантами ответов
         String[][] answer = {
                 {"2","4"},
-                {"5","4"},
+                {"5","4","2"},
                 {"5","9"}
         };
 
@@ -28,7 +28,7 @@ public class Testing {
             System.out.println(questions[i]); //Вывод вопроса на экран
 
             //Вывод вариантов ответов на экран
-            for (int j = 0; j < answer.length-1; j++){
+            for (int j = 0; j < answer[i].length; j++){
                 System.out.println((j+1) + ") " + answer[i][j]);
             }
 
