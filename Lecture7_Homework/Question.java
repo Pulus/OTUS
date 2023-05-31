@@ -1,20 +1,15 @@
 package Lecture7_Homework;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Question {
-    public int number;
-    public String text;
-    public LinkedList <ResponseOptions> variants = new LinkedList<>();
-
+    private String text = "";
+    final ArrayList<ResponseOptions> variants = new ArrayList<>();
 
     /**
      * Установка номера и текста вопроса
      */
-    public void setNumber (int inNumber){
-        number = inNumber;
-    }
     public void setText(String inText){
         text = inText;
     }
@@ -22,25 +17,22 @@ public class Question {
      * Добавление варианта ответа
      */
     public void addResponse(String InText, boolean inTrueOrFalse) {
-        ResponseOptions variant = new ResponseOptions();
-        variant.number = this.variants.size() + 1;
-        variant.text = InText;
-        variant.trueOrFalse = inTrueOrFalse;
+        int size = this.variants.size() + 1;
+        ResponseOptions variant = new ResponseOptions(size,InText,inTrueOrFalse);
         this.variants.add(variant);
     }
     public void addResponse(String InText) {
-        ResponseOptions variant = new ResponseOptions();
-        variant.number = this.variants.size() + 1;
-        variant.text = InText;
+        int size = this.variants.size() + 1;
+        ResponseOptions variant = new ResponseOptions(size,InText);
         this.variants.add(variant);
     }
 
     /**
      * Печать вопроса
      */
-    public void print () {
+    public void printTerminal () {
         //Печать вопроса
-        System.out.println(number + ". " + text);
+        System.out.println(text);
         //Печать вариантов ответа
         for (ResponseOptions variant : variants) {
             variant.print();
@@ -52,10 +44,7 @@ public class Question {
      */
     public boolean checkResponse (){
         System.out.print("Выберите вариант ответа: ");
-        Scanner scan = new Scanner(System.in); //Считываем с консоли ответ пользователя
-        return variants.get(scan.nextInt()-1).trueOrFalse;
+        Scanner scan = new Scanner(System.in); //Считываем с консоли ответ пользовател
+        return variants.get(scan.nextInt()-1).getTrueOrFalse();
     }
-
-
-
 }
