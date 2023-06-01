@@ -1,15 +1,15 @@
 package Lecture12_Homework;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class Sorting {
-    public static Integer getRandomInt(){
+    public static void setRandomInteger(List<Integer> array, int size){
         Random r = new Random();
-        return r.nextInt(9)+1;
+        for (int i = 0; i < size; i++) {
+            array.add(r.nextInt(9) + 1);
+        }
     }
-    public static void sorting (ArrayList<Integer> array){
+    public static void sorting (List<Integer> array){
         //Процесс сортировки выбором
         for (int i = 0; i < array.size() - 1; i++) {
             int nMin = i;
@@ -25,13 +25,12 @@ public class Sorting {
         }
     }
     public static void main(String[] args) {
-        int size = 100000;
-        ArrayList<Integer> array1 = new ArrayList<>();
+        int size = 100_000;
+        List<Integer> array1 = new ArrayList<>();
         //Заполняем массив рандомными числами
-        for (int i = 0; i < size; i++) {
-            array1.add(getRandomInt());
-        }
-        ArrayList<Integer> array2 = new ArrayList<>(array1);
+        setRandomInteger(array1, size);
+
+        List<Integer> array2 = new ArrayList<>(array1);
         long startTimePrimitives = System.currentTimeMillis();
         sorting(array1);
         long endTimePrimitives = System.currentTimeMillis();
