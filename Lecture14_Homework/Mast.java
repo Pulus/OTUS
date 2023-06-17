@@ -1,5 +1,7 @@
 package Lecture14_Homework;
 
+import java.io.FileOutputStream;
+
 public class Mast {
     public static void main(String[] args) {
         try{
@@ -10,6 +12,7 @@ public class Mast {
                 System.out.println("Внимание возникла ошибка:" + e);
             }
             LowerClass.addException();
+            TryFinally.startTest();
         } catch (Exception e){
             System.out.println("Внимание возникла ошибка:" + e) ;
         } finally {
