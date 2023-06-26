@@ -18,7 +18,10 @@ public class HomeWork {
     public static void main(String[] args)
     {
         DiceTest.startTest();
-        GameTest.startTest();
+
+        GameTest.startTestEqualValues();
+        GameTest.startTestFirstValueGreater();
+        GameTest.startTestSecondValueGreater();
     }
 
 }
