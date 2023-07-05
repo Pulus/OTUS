@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Стилизованная таблица</title>
+
+	<style>
+        h3 {
+            color: steelblue;
+        }
+
+        .students-tab {
+            border: 1px solid steelblue;
+            width: 650px;
+            border-collapse: collapse;
+            margin-bottom: 300px;
+        }
+
+        .students-tab tr td {
+            border: 1px solid steelblue;
+        }
+
+        .students-tab-col1 {
+            width: 300px;
+        }
+
+        .students-tab-col2 {
+            width: 120px;
+        }
+
+        .students-tab-col3 {
+            width: 150px;
+        }
+
+        .students-tab-col4 {
+            width: 80px;
+        }
+
+		.students-form {
+            border: 1px solid steelblue;
+            width: 400px;
+            border-collapse: collapse;
+
+        }
+
+        .textForm {
+            width: 150px;
+			margin: 5px;
+        }
+
+		.fieldForm {
+			width: 250px;
+			margin: 5px;
+			border: 1px solid steelblue;
+		{
+
+    </style>
+    <script>
+		function addStudent(){
+            const studentsTab = document.getElementById("studentsTab");
+            let studentName = document.getElementById("fioTextBox").value;
+			let disciplineId = document.getElementById("disciplineId").value;
+			let datePicker = document.getElementById("datePicker").value;
+            let birthDay = Math.floor((new Date() - new Date(document.getElementById("datePicker").value)) / 1000 / 60 / 60 / 24 / 365);
+			let studentTabRowsLength = studentsTab.rows.length;
+			var sumStudents = studentTabRowsLength - 2;
+			
+            var newRow = studentsTab.insertRow(sumStudents);        
+            
+            var newCell = newRow.insertCell(-1);
+            newCell.appendChild(document.createTextNode(studentName));
+			newCell = newRow.insertCell(-1);
+			newCell.appendChild(document.createTextNode(disciplineId));
+			newCell = newRow.insertCell(-1);
+			newCell.appendChild(document.createTextNode(datePicker));
+			newCell = newRow.insertCell(-1);
+			newCell.appendChild(document.createTextNode(birthDay));
+			
+			var sumAge = 0;
+			for (var i = 1; i < studentTabRowsLength-1; i++){
+				sumAge += Number(studentsTab.rows[i].cells["3"].innerText);
+			}	
+			
+			let m = document.getElementById("middleAge");
+			m.innerHTML = Math.floor(sumAge/sumStudents);
+		}	
+    </script>
+</head>
+<body>
+<h3>Форма добавления информации о студенте</h3>
+<form method = "get">
+	<table class="students-form" id="studentsForm">
+		<thead>
+		<tr>
+			<td class="students-form-col1"></td>
+			<td class="students-form-col2"></td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><label class = "textForm" for = "fioTextBox">ФИО студента:</label></td>
+			<td><input class = "fieldForm" id = "fioTextBox" name = "fio" type = "text"></td>
+		</tr>
+		<tr>
+			<td><label class = "textForm" for = "datePicker">Дата рождения:</label></td>
+			<td><input class = "fieldForm" id = "datePicker" name = "examDate" type = "date" value = "2021-05-04"></td>
+		</tr>
+		<tr>
+			<td><label class = "textForm" for = disciplineId>Пол:</label></td>
+			<td>
+				<select class = "fieldForm" id = "disciplineId" name = "discipline">
+					<option value = "мужчина" selected>мужчина</option>
+					<option value = "женщина">женщина</option>
+				</select>
+			</td>
+		</tr>
+		<tr><td>    
+			<button type = "button" onclick = 'addStudent()'>Добавить</button>
+			<pre id = humanContainer></pre> 
+		</td></tr>
+		</tbody>
+	</table>
+</form>
+
+<h3>Таблица студентов</h3>
+<table class="students-tab" id="studentsTab">
+	<thead>
+	<tr>
+		<td class="students-tab-col1">Имя студента</td>
+		<td class="students-tab-col2">Пол</td>
+		<td class="students-tab-col3">Дата рождения</td>
+		<td class="students-tab-col4">Возраст</td>
+	</tr>
+	</thead>
+
+	<tbody>
+	<tr>
+		<td>Иван Ограномович Штейн</td>
+		<td>мужчина</td>
+		<td>12.06.1974</td>
+		<td>46</td>
+	</tr>
+	<tr>
+		<td>Гертруда Анатольевна Иванова</td>
+		<td>женщина</td>
+		<td>01.01.1987</td>
+		<td>34</td>
+	</tr>
+	<tr>
+		<td>Воланд Игоревич Муха</td>
+		<td>мужчина</td>
+		<td>27.04.1974</td>
+		<td>47</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<td colspan="4">&nbsp;</td>
+	</tr> <tr>
+		<td colspan="3">Средний возраст студентов</td>
+		<td id= "middleAge" >42</td>
+	</tr>
+	</tfoot>
+</table>
+
+
+</body>
+</html>
